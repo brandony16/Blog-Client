@@ -10,7 +10,7 @@ const Header = () => {
   return (
     <div
       id="header"
-      className="fixed top-0 left-0 w-screen flex items-center justify-between bg-gray-900 text-white px-8 py-4 w-100vw"
+      className="fixed top-0 left-0 w-screen flex items-center justify-between bg-gray-900 text-white px-8 py-4 w-100vw h-18"
     >
       <div
         id="title"
