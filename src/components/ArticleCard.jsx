@@ -3,7 +3,9 @@ const ArticleCard = () => {
     <a
       href="/articles/16"
       id="article-card"
-      className="min-h-[320px] flex flex-col bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 p-6 border border-gray-200 hover:-translate-y-1 transform cursor-pointer"
+      className="min-h-[320px] bg-orange-50 border border-orange-200 rounded-2xl shadow-md
+                 hover:shadow-xl hover:border-orange-400 transform hover:scale-[1.03] transition-all duration-300 ease-out
+                 p-6 flex flex-col justify-between h-64 relative overflow-hidden"
     >
       <h3
         id="card-title"
@@ -21,6 +23,7 @@ const ArticleCard = () => {
         <p>Published: Jan 20, 2025</p>
         <p>Edited: Feb 2, 2025</p>
       </div>
+      <div className="absolute bottom-0 left-0 w-full h-2 bg-gradient-to-r from-blue-600 to-orange-600 opacity-80" />
     </a>
   );
 };
