@@ -8,7 +8,7 @@ const Intro = () => {
       <p className="text-lg">
         This is a blog website where I am learning how to build a full stack
         project using React for the frontend and express for the backend, with a
-        PostgreSQL database. Check out the{" "}
+        PostgreSQL database. Check out my{" "}
         <a
           className="font-semibold underline"
           href="https://www.github.com/brandony16/Blog-Client"
@@ -19,8 +19,8 @@ const Intro = () => {
         some of my other projects.
       </p>
       <p className="text-lg">
-        Below you can find some articles about tech and coding. Read them and
-        feel free to leave a comment. Happy Coding!
+        Below you can find some articles about tech and coding. Feel free to
+        read them and leave a comment!
       </p>
     </div>
   );

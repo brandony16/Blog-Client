@@ -1,1 +1,32 @@
 @import "tailwindcss";
+
+@theme {
+  --animate-figure8: figure8 8s ease-in-out infinite;
+  @keyframes figure8 {
+    0%,
+    100% {
+      transform: translate(0, 0);
+    }
+    12.5% {
+      transform: translate(20px, -15px);
+    }
+    25% {
+      transform: translate(40px, 0);
+    }
+    37.5% {
+      transform: translate(20px, 15px);
+    }
+    50% {
+      transform: translate(0, 0);
+    }
+    62.5% {
+      transform: translate(-20px, -15px);
+    }
+    75% {
+      transform: translate(-40px, 0);
+    }
+    87.5% {
+      transform: translate(-20px, 15px);
+    }
+  }
+}
