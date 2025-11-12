@@ -26,9 +26,15 @@ const ArticleCard = ({ article }) => {
       </p>
 
       <div className="mt-auto text-sm text-gray-500 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1">
-        <p>Published: {article.publishedAt.toTimeString()}</p>
+        <div className="flex flex-col">
+          <p>Published:</p>
+          <p> {new Date(article.publishedAt).toDateString()}</p>
+        </div>
         {article.editedAt && (
-          <p>Edited: {article.editedAt.toLocaleTimeString()}</p>
+          <div className="flex flex-col">
+            <p>Edited:</p>
+            <p>{new Date(article.editedAt).toDateString()}</p>
+          </div>
         )}
       </div>
       <div className="absolute bottom-0 left-0 w-full h-2 bg-linear-to-r from-blue-600 to-orange-600 opacity-80" />
