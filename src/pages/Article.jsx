@@ -1,5 +1,6 @@
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { getArticleById } from "../utils/articleApi.js";
 
 const Article = () => {
   const { id } = useParams();
@@ -19,34 +20,34 @@ const Article = () => {
     }
   }, [id]);
 
-  if (loading) return <p className="text-center text-gray-500">Loading...</p>;
+  useEffect(() => {
+    fetchArticle();
+  }, [fetchArticle]);
+
+  const getLargestDate = (article) => {
+    return Math.max(new Date(article.editedAt), new Date(article.createdAt));
+  };
+
+  if (loading || !article)
+    return <p className="text-center text-gray-500">Loading...</p>;
 
   return (
-    <article className="max-w-3xl mx-auto bg-white shadow-sm rounded-2xl p-8 space-y-6">
-      <header className="space-y-2 border-b pb-4">
-        <h1 className="text-4xl font-bold text-blue-700">{article.title}</h1>
-        <div className="flex justify-between text-sm text-gray-500">
-          <span>{article.author}</span>
-          <span>{new Date(article.date).toLocaleDateString()}</span>
-        </div>
-      </header>
-
-      {article.image && (
-        <img
-          src={article.image}
-          alt={article.title}
-          className="w-full h-64 object-cover rounded-xl"
-        />
-      )}
-
-      <section className="prose max-w-none text-gray-800 leading-relaxed">
-        {article.content}
-      </section>
-
-      <footer className="pt-6 border-t text-sm text-gray-500">
-        <p>Category: {article.category}</p>
-      </footer>
-    </article>
+    <div className="flex items-start justify-center h-full bg-linear-to-br from-orange-100 to-blue-100 p-10">
+      <article className="mx-auto mt-12 bg-white shadow-sm rounded-2xl p-8 space-y-6 min-w-1/2 max-w-3/4">
+        <header className="space-y-2 border-b pb-4">
+          <h1 className="text-4xl font-bold text-blue-700">{article.title}</h1>
+          <div className="flex justify-between text-sm text-gray-500">
+            <span>{article.author}</span>
+            <span>
+              {new Date(getLargestDate(article)).toLocaleDateString()}
+            </span>
+          </div>
+        </header>
+        <section className="prose max-w-none text-gray-800 leading-relaxed">
+          {article.body}
+        </section>
+      </article>
+    </div>
   );
 };
 

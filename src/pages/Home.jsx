@@ -5,7 +5,7 @@ const Home = () => {
   return (
     <div
       id="home"
-      className="flex flex-col w-full bg-gray-200 p-10 box-border gap-10"
+      className="flex flex-col w-full bg-gray-200 p-10 box-border gap-10 h-full"
     >
       <Intro />
       <ArticleCards />

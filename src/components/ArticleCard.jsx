@@ -1,3 +1,5 @@
+import { NavLink } from "react-router-dom";
+
 const ArticleCard = ({ article }) => {
   const PREVIEW_LENGTH = 50;
 
@@ -7,8 +9,8 @@ const ArticleCard = ({ article }) => {
   };
 
   return (
-    <a
-      href="/articles/16"
+    <NavLink
+      to={`/articles/${article.id}`}
       id="article-card"
       className="min-h-80 bg-orange-50 border border-orange-200 rounded-2xl shadow-md
                  hover:shadow-xl hover:border-orange-400 transform hover:scale-[1.03] transition-all duration-300 ease-out
@@ -38,7 +40,7 @@ const ArticleCard = ({ article }) => {
         )}
       </div>
       <div className="absolute bottom-0 left-0 w-full h-2 bg-linear-to-r from-blue-600 to-orange-600 opacity-80" />
-    </a>
+    </NavLink>
   );
 };
 

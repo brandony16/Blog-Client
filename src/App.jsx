@@ -5,13 +5,13 @@ import Article from "./pages/Article.jsx";
 
 function App() {
   return (
-    <div id="app-container">
+    <div id="app-container" className="flex flex-col min-h-screen">
       <nav>
         <Header />
       </nav>
-      <main className="mt-18">
+      <main className="pt-18 h-screen">
         <Routes>
-          <Route path="/article/:id" element={<Article />} />
+          <Route path="/articles/:id" element={<Article />} />
           <Route path="/" element={<Home />} />
         </Routes>
       </main>
