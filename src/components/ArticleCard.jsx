@@ -1,11 +1,11 @@
 import { NavLink } from "react-router-dom";
 
 const ArticleCard = ({ article }) => {
-  const PREVIEW_LENGTH = 50;
+  const PREVIEW_LENGTH = 100;
 
   const getPreview = (body) => {
     if (body.length <= PREVIEW_LENGTH) return body;
-    return body.slice(0, 50) + "...";
+    return body.slice(0, PREVIEW_LENGTH) + "...";
   };
 
   return (
@@ -18,12 +18,14 @@ const ArticleCard = ({ article }) => {
     >
       <h3
         id="card-title"
-        className="text-xl font-semibold text-gray-900 mb-2 hover:text-blue-600 transition-colors duration-200 cursor-pointer"
+        className="text-xl font-semibold text-gray-900 hover:text-blue-600 transition-colors duration-200 cursor-pointer"
       >
         {article.title}
       </h3>
-
-      <p id="card-preview" className="text-gray-600 mb-4 line-clamp-3">
+      <h4 className="text-gray-600 italic mb-2">
+        {article.author.firstName} {article.author.lastName}
+      </h4>
+      <p id="card-preview" className="text-black mb-4 line-clamp-3">
         {getPreview(article.body)}
       </p>
 
