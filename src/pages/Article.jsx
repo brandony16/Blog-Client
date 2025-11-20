@@ -50,7 +50,7 @@ const Article = () => {
           {article.body}
         </section>
       </article>
-      <CommentSection />
+      <CommentSection articleId={article.id}/>
     </div>
   );
 };
