@@ -7,30 +7,6 @@ const CommentSection = ({ articleId }) => {
   const [comments, setComments] = useState([]);
   const [error, setError] = useState("");
 
-  const postComment = useCallback(async () => {
-    if (!text) return;
-
-    try {
-      const res = await fetch(
-        `http://localhost:3000/api/articles/${articleId}/comments`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-          body: {
-            text,
-          },
-        }
-      );
-      if (!res.ok) throw new Error("Issue posting comment");
-    } catch (err) {
-      console.error(err.message);
-      alert("Issue posting comment. Please try again");
-    }
-  }, [articleId, text, token]);
-
   const getComments = useCallback(async () => {
     setError("");
     try {
@@ -56,6 +32,31 @@ const CommentSection = ({ articleId }) => {
     }
   }, [token, setComments, articleId]);
 
+  const postComment = useCallback(async () => {
+    if (!text) return;
+
+    try {
+      const res = await fetch(
+        `http://localhost:3000/api/articles/${articleId}/comments`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({
+            text,
+          }),
+        }
+      );
+      if (!res.ok) throw new Error("Issue posting comment");
+      await getComments();
+    } catch (err) {
+      console.error(err.message);
+      alert("Issue posting comment. Please try again");
+    }
+  }, [articleId, text, token, getComments]);
+
   useEffect(() => {
     getComments();
   }, [getComments]);
@@ -74,7 +75,7 @@ const CommentSection = ({ articleId }) => {
               rows={1}
             />
             <button
-              className="px-4 py-2 h-13 rounded-lg bg-blue-600 text-white font-semibold hover:bg-blue-700 whitespace-nowrap"
+              className="px-4 py-2 h-13 rounded-lg bg-blue-600 text-white font-semibold hover:bg-blue-700 whitespace-nowrap cursor-pointer"
               onClick={() => {
                 if (!text.trim()) return;
                 postComment();
@@ -93,27 +94,17 @@ const CommentSection = ({ articleId }) => {
             {comments.map((c) => (
               <div
                 key={c.id}
-                className="bg-white p-5 shadow-sm rounded-xl border space-y-2"
+                className="bg-white p-3 shadow-sm rounded-xl border space-y-2"
               >
                 <div className="flex items-center gap-3">
-                  {c.user?.avatar && (
-                    <img
-                      src={c.user.avatar}
-                      alt={c.user.name}
-                      className="w-10 h-10 rounded-full object-cover"
-                    />
-                  )}
-                  <div>
-                    <p className="font-semibold text-gray-800">
-                      {c.user?.name}
-                    </p>
-                    <p className="text-xs text-gray-500">
-                      {new Date(c.createdAt).toLocaleString()}
-                    </p>
-                  </div>
+                  <p className="font-semibold text-gray-800">
+                    {c.commenter.firstName} {c.commenter.lastName}
+                  </p>
+                  <p className="text-xs text-gray-500">
+                    {new Date(c.createdAt).toLocaleString()}
+                  </p>
                 </div>
-
-                <p className="text-gray-700">{c.content}</p>
+                <p className="text-gray-700">{c.text}</p>
               </div>
             ))}
           </div>

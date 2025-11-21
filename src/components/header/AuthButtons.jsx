@@ -1,15 +1,19 @@
+import { NavLink } from "react-router-dom";
+
 const AuthButtons = () => {
   const btnStyles =
     "px-4 py-2 font-medium rounded-lg transition cursor-pointer box-border";
   return (
     <div id="authButtons" className="flex items-center gap-4">
-      <button
+      <NavLink
+        to={"/login"}
         id="authBtn"
         className={btnStyles + " text-white bg-blue-600 hover:bg-blue-500"}
       >
         Login
-      </button>
-      <button
+      </NavLink>
+      <NavLink
+        to={"/signup"}
         id="authBtn"
         className={
           btnStyles +
@@ -17,7 +21,7 @@ const AuthButtons = () => {
         }
       >
         Sign Up
-      </button>
+      </NavLink>
     </div>
   );
 };
