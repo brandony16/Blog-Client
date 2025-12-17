@@ -12,13 +12,13 @@ const ArticleCard = ({ article }) => {
     <NavLink
       to={`/articles/${article.id}`}
       id="article-card"
-      className="min-h-80 bg-orange-50 border border-orange-200 rounded-2xl shadow-md
+      className="min-h-80 bg-white border border-orange-200 rounded-2xl shadow-md
                  hover:shadow-xl hover:border-orange-400 transform hover:scale-[1.03] transition-all duration-300 ease-out
                  p-6 flex flex-col justify-between h-64 relative overflow-hidden"
     >
       <h3
         id="card-title"
-        className="text-xl font-semibold text-gray-900 hover:text-blue-600 transition-colors duration-200 cursor-pointer"
+        className="text-xl font-semibold text-gray-900 cursor-pointer"
       >
         {article.title}
       </h3>

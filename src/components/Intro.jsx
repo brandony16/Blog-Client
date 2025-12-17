@@ -1,28 +1,36 @@
 const Intro = () => {
   return (
-    <div className="flex flex-col gap-4">
-      <h3 className="text-3xl font-semibold underline">Intro:</h3>
-      <p className="text-lg">
-        I am Brandon Young, a CS student at Virginia Tech (Go Hokies!).
+    <section className="max-w-3xl mx-auto bg-white border border-orange-200 rounded-2xl shadow-sm p-6 flex flex-col gap-4">
+      <h3 className="text-3xl font-bold text-blue-700 border-b pb-2">
+        Intro
+      </h3>
+
+      <p className="text-lg text-gray-800">
+        I am <span className="font-semibold">Brandon Young</span>, a CS student at
+        Virginia Tech (<span className="text-red-700 font-semibold">Go Hokies!</span>).
       </p>
-      <p className="text-lg">
+
+      <p className="text-lg text-gray-700 leading-relaxed">
         This is a blog website where I am learning how to build a full stack
-        project using React for the frontend and express for the backend, with a
-        PostgreSQL database. Check out my{" "}
+        project using <span className="font-semibold">React</span> for the
+        frontend and <span className="font-semibold">Express</span> for the
+        backend, with a <span className="font-semibold">PostgreSQL</span>{" "}
+        database. Check out my{" "}
         <a
-          className="font-semibold underline"
+          className="font-semibold text-blue-600 hover:text-blue-800 underline"
           href="https://www.github.com/brandony16/Blog-Client"
+          target="_blank"
+          rel="noopener noreferrer"
         >
-          Github
+          GitHub
         </a>{" "}
-        for this project to see how this website was created, and to check out
-        some of my other projects.
+        to see how this site was built and explore my other projects.
       </p>
-      <p className="text-lg">
-        Below you can find some articles about tech and coding. Feel free to
-        read them and leave a comment!
+
+      <p className="text-lg text-gray-700">
+        Below you can find articles about tech and coding. Feel free to read them.
       </p>
-    </div>
+    </section>
   );
 };
 

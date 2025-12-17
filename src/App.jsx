@@ -4,6 +4,7 @@ import Header from "./components/header/Header.jsx";
 import Article from "./pages/Article.jsx";
 import Signup from "./pages/Signup.jsx";
 import Login from "./pages/Login.jsx";
+import Profile from "./pages/Profile.jsx";
 
 function Layout() {
   return (
@@ -26,6 +27,7 @@ function App() {
 
       <Route path="*" element={<Layout />}>
         <Route path="articles/:id" element={<Article />} />
+        <Route path="profile" element={<Profile />} />
         <Route index element={<Home />} />
       </Route>
     </Routes>

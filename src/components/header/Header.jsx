@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import logo from "../../assets/BnB_logo.png";
 import AuthButtons from "./AuthButtons.jsx";
-import Searchbar from "./Searchbar.jsx";
+import Searchbar from "../Searchbar.jsx";
 import { useContext, useEffect, useRef, useState } from "react";
 import { AuthContext } from "../../context/AuthContext.jsx";
 import Profile from "./Profile.jsx";
@@ -38,14 +38,12 @@ const Header = () => {
     >
       <div
         id="title"
-        className="flex items-center gap-3 cursor-pointer"
+        className="flex items-center gap-3 cursor-pointer underline underline-offset-4"
         onClick={() => navigate("/")}
       >
         <img src={logo} alt="" className="h-10 w-10" />
         <h1 className="text-2xl font-semibold">Bits & Breakpoints</h1>
       </div>
-
-      <Searchbar />
 
       {user ? (
         <div ref={profileRef}>
@@ -55,7 +53,7 @@ const Header = () => {
         <AuthButtons />
       )}
 
-      {showModal && <ProfileModal ref={modalRef} />}
+      {showModal && <ProfileModal ref={modalRef} setShowModal={setShowModal} />}
     </div>
   );
 };
