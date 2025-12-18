@@ -7,28 +7,36 @@ const Searchbar = () => {
   const navigate = useNavigate();
 
   const handleSearch = () => {
-    if (!query.trim()) return;
-
-    navigate(`/?q=${encodeURIComponent(query)}`);
+    if (!query.trim()) {
+      navigate("/");
+    } else {
+      navigate(`/?q=${encodeURIComponent(query)}`);
+    }
   };
 
   return (
-    <div className="flex items-center bg-gray-800 rounded-full px-4 py-2 w-full max-w-md shadow-sm focus-within:ring-2 focus-within:ring-blue-500">
+    <form
+      className="flex items-center p-2 w-full max-w-md border-b-2 focus-within:border-orange-400"
+      onSubmit={(e) => {
+        e.preventDefault();
+        handleSearch();
+      }}
+    >
       <input
         type="text"
         placeholder="Search articles..."
-        className="bg-transparent outline-none text-gray-800 dark:text-gray-100 w-full placeholder-gray-400"
+        className="bg-transparent outline-none text-black w-full placeholder-gray-600"
         value={query}
         onChange={(e) => setQuery(e.target.value)}
       />
       <button
+        type="submit"
         id="searchSubmit"
         className="rounded-full cursor-pointer ml-2 hover:scale-1.02 transition-transform duration-200 transform hover:scale-110 active:scale-95"
-        onClick={() => handleSearch()}
       >
-        <Search className="text-gray-500 dark:text-gray-400" size={20} />
+        <Search className="text-black" size={20} />
       </button>
-    </div>
+    </form>
   );
 };
 
